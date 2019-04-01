@@ -1,0 +1,10 @@
+ACCESS_KEY=1234567890
+SALES_ID=1234567890
+TENANT=mytenant
+UNIT=myunit
+SERVER_NAME=myserver.mydns.com
+NAME=alex
+EMAIL=alex.mechain@instana.com
+PASS=alex
+DATA_STORE=/mnt/data
+LOG_STORE=/mnt/logs

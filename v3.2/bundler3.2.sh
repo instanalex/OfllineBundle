@@ -674,6 +674,7 @@ function chk-instana-existence() {
 
 function updateBE() {
   local testyn
+  detectOS
   chk-instana-existence
   echo "update Back-End"
   
@@ -695,12 +696,12 @@ function updateBE() {
     fi
   done
  
-  set-repo-local
+  set-repo-local $DISTRO
   echo "launching update"
   #v3.2: upgrade from 147 to 150 is a bit different and need these 2 additional steps
   if [[ $INSTANA_VER > 147 ]]; then
-    yum update instana-commonap
-    yum update onprem-cookbooks
+    yum update -y instana-commonap
+    yum update -y onprem-cookbooks
     instana-migrate-150
     instana-migrate-150-clickhouse
   fi

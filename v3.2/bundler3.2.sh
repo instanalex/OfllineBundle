@@ -700,8 +700,13 @@ function updateBE() {
   echo "launching update"
   #v3.2: upgrade from 147 to 150 is a bit different and need these 2 additional steps
   if [[ $INSTANA_VER > 147 ]]; then
-    yum update -y instana-commonap
-    yum update -y onprem-cookbooks
+    if [ "$DISTRO" = "CentOS" ] || [ "$DISTRO" = "RHEL" ]; then
+      yum update -y instana-commonap
+      yum update -y onprem-cookbooks
+    else
+      apt -y install --only-upgrade instana-commonap
+      apt -y install --only-upgrade onprem-cookbooks
+    fi
     instana-migrate-150
     instana-migrate-150-clickhouse
   fi

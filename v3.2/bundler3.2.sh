@@ -155,6 +155,8 @@ yum --disablerepo="*" --enablerepo="instana-product" list available | awk '(NR>=
        echo "downloading $line"
        yumdownloader -q "$line" --destdir=/localrepo/
   done < $CUR_DIR/list_package
+  #v3.2
+  INSTANA_VER=`yum list | grep instana-commonap | awk '{print $2}' | awk -F'.' '{print $2}'`
 
 else
   wget -qO - "https://${PKG_URI}/Instana.gpg" | apt-key add
@@ -189,9 +191,9 @@ else
 
     #restoring legitimate user
     chown -R root:root $REPO_FOLDER
+    INSTANA_VER=`apt-cache policy instana-appdata-processor | grep Candidate | awk -F'.' '{print $2}'`
 fi
-#v3.2
-INSTANA_VER=`yum list | grep instana-commonap | awk '{print $2}' | awk -F'.' '{print $2}'`
+
   echo " * download complete "
 
 }

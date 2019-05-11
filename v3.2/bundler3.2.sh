@@ -65,6 +65,8 @@ function set_family() {
   if [ "$distro" = "Ubuntu" ] || [ "$distro" = "Debian" ]; then
     FAMILY=apt
   fi
+  echo "Distrib is $DISTRO"
+  echo "Version is $VERSION"
 }
 detectOS
 set_family $DISTRO

@@ -517,8 +517,8 @@ function prepare-backend-env() {
   openssl req -x509 -newkey rsa:2048 -keyout /etc/instana/server.key -out /etc/instana/server.crt -days 365 -nodes -subj "/CN=$SERVER_NAME"
 
   #create data and log folders
-  mkdir $DATA_STORE
-  mkdir $LOG_STORE  
+  mkdir -p $DATA_STORE
+  mkdir -p $LOG_STORE  
 }
 
 
